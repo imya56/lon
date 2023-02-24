@@ -1,0 +1,30 @@
+function rk()
+
+	if (not SearchBuff("player","Улучшенные доспехи"))					then CastSpellByName("Улучшенные доспехи");		end   
+	
+	if (not SearchBuff("player","Львиная защита"))						then CastSpellByName("Львиная защита");			end
+	
+	if (not SearchBuff("player","Палящий свет"))						then CastSpellByName("Палящий свет");			end
+	
+	
+	
+   if (not UnitExists("target")) or (UnitIsUnit("player","target")) or (UnitHealth("target")<=0) or (UnitIsDeadOrGhost("target")) or (not UnitCanAttack("player","target")) then 
+		TargetNearestEnemy()
+	else
+
+	
+	if (not SearchDebuff("target","Разоружение III"))  then 	CastSpellByName("Разоружение"); end
+	
+	
+	if (UnitMana("player")>=20)		and		(SkillReady("Теневой удар")<=0.4)		and		(SearchDebuff("target","Кровотечение")==false) then 	CastSpellByName("Теневой удар");	else
+	
+	if (UnitMana("player")>=35)		and		(SkillReady("Атака в рану")<=0.4)		and		(SearchDebuff("target","Кровотечение")==true) and (SearchDebuff("target","Тяжелое ранение")==true) then CastSpellByName("Атака в рану");	else
+	
+	if (UnitMana("player")>=30)		and		(SkillReady("Подлый удар")<=0.4)		and		(SearchDebuff("target","Кровотечение")==true) then CastSpellByName("Подлый удар");		end
+
+
+end
+end
+end
+belie()
+end
